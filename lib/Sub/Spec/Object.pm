@@ -7,17 +7,17 @@ use warnings;
 # VERSION
 
 require Exporter;
-our @ISA = qw(Exporter);
-our @EXPORT = qw(ssres);
-
-sub ssres {
-    require Sub::Spec::Object::Response;
-    Sub::Spec::Object::Response->new(@_);
-}
+our @ISA    = qw(Exporter);
+our @EXPORT = qw(ssreq ssres ssspec sssub);
 
 sub ssreq {
     require Sub::Spec::Object::Request;
     Sub::Spec::Object::Request->new(@_);
+}
+
+sub ssres {
+    require Sub::Spec::Object::Response;
+    Sub::Spec::Object::Response->new(@_);
 }
 
 sub ssspec {
@@ -44,6 +44,11 @@ sub sssub {
        $ssres->result;     # [1, 2, 3]
 
  # TODO: ssspec
+ $SPEC{foo} = { features => { undo=>1 } };
+ my $ssspec = ssspec $SPEC{foo};
+ my $ssspec->feature('undo');    # 1
+ my $ssspec->feature('dry_run'); # ""
+
  # TODO: ssreq
  # TODO: sssub
 
@@ -57,9 +62,21 @@ that.
 
 =head1 FUNCTIONS
 
+=head2 ssreq $req => OBJECT
+
+Exported by default. A shortcut for Sub::Spec::Object::Request->new($req).
+
 =head2 ssres $res => OBJECT
 
 Exported by default. A shortcut for Sub::Spec::Object::Response->new($res).
+
+=head2 ssspec $spec => OBJECT
+
+Exported by default. A shortcut for Sub::Spec::Object::Spec->new($spec).
+
+=head2 sssub $sub => OBJECT
+
+Exported by default. A shortcut for Sub::Spec::Object::Sub->new($sub).
 
 
 =head1 SEE ALSO
