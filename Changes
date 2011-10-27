@@ -1,5 +1,10 @@
 Revision history for Sub::Spec::Object
 
+0.02     2011-10-27
+
+         Implement SSO::Spec (only tiny bits of it, e.g. feature() and arg()).
+
+
 0.01     2011-08-29
 
          First, early release. Not everything is implemented.
