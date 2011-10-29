@@ -25,7 +25,6 @@ sub feature {
         ${$self}->{features} //= {};
         my $old = ${$self}->{features}{$name};
         ${$self}->{features}{$name} = $value;
-        use Data::Dump; dd [ $name, ${$self}->{features}{$name}, $value];
         return $old;
     } else {
         ${$self}->{features}{$name};
