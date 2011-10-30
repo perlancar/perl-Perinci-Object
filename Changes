@@ -1,5 +1,10 @@
 Revision history for Sub::Spec::Object
 
+0.03     2011-10-31
+
+         No functional changes. Remove debugging statement.
+
+
 0.02     2011-10-27
 
          Implement SSO::Spec (only tiny bits of it, e.g. feature() and arg()).
