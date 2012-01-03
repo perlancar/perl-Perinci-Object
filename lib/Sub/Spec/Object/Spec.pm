@@ -17,6 +17,11 @@ sub new {
     bless $obj, $class;
 }
 
+sub spec_version {
+    my $self = shift;
+    ${$self}->{spec_version} // 1.0;
+}
+
 sub feature {
     my $self = shift;
     my $name = shift;
@@ -52,7 +57,11 @@ sub arg {
 
  use Sub::Spec::Object::Response;
 
- $SPEC{foo} = { args => { b => 'int' }, features => {undo=>1} };
+ $SPEC{foo} = {
+     spec_version=>1.1,
+     args => { b => {schema=>'int'} },
+     features => {undo=>1},
+ };
  my $ssspec = ssspec $SPEC{foo};
  print $ssres->feature('undo'), # 1
        $ssres->arg('a');        # undef
