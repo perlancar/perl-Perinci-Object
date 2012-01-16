@@ -1,4 +1,4 @@
-package Sub::Spec::Object::Spec;
+package Rias::Object::function;
 
 use 5.010;
 use strict;
@@ -6,26 +6,16 @@ use warnings;
 
 # VERSION
 
-require Exporter;
-our @ISA = qw(Exporter);
-our @EXPORT = qw(ssspec);
+use parent qw(Rias::Object::Metadata);
 
-sub new {
-    my ($class, $spec) = @_;
-    $spec //= {};
-    my $obj = \$spec;
-    bless $obj, $class;
-}
+sub type { "function" }
 
-sub spec_version {
-    my $self = shift;
-    ${$self}->{spec_version} // 1.0;
-}
-
+# convenience for accessing features property
 sub feature {
     my $self = shift;
     my $name = shift;
     if (@_) {
+        die "1.0 can't set feature" if $self->v eq 1.0;
         my $value = shift;
         ${$self}->{features} //= {};
         my $old = ${$self}->{features}{$name};
@@ -36,10 +26,12 @@ sub feature {
     }
 }
 
+# convenience for accessing args property
 sub arg {
     my $self = shift;
     my $name = shift;
     if (@_) {
+        die "1.0 can't set arg" if $self->v eq 1.0;
         my $value = shift;
         ${$self}->{args} //= {};
         my $old = ${$self}->{args}{$name};
@@ -51,7 +43,7 @@ sub arg {
 }
 
 1;
-# ABSTRACT: Represent sub spec
+# ABSTRACT: Represent function metadata
 
 =head1 SYNOPSIS
 

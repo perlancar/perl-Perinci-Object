@@ -1,16 +1,7 @@
-Revision history for Sub::Spec::Object
+Revision history for Rias::Object
 
-0.03     2011-10-31
+0.04     2012-01-16
 
-         No functional changes. Remove debugging statement.
-
-
-0.02     2011-10-27
-
-         Implement SSO::Spec (only tiny bits of it, e.g. feature() and arg()).
-
-
-0.01     2011-08-29
-
-         First, early release. Not everything is implemented.
-
+         First release, repackaged from Sub::Spec::Object. Now follows Rinci
+         (currently 1.1) specification instead of Sub::Spec 1.0 (but still
+         supports old sub specs).
