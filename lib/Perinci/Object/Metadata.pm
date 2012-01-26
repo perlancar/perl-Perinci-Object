@@ -1,4 +1,4 @@
-package Rias::Object::Metadata;
+package Perinci::Object::Metadata;
 
 use 5.010;
 use strict;
@@ -28,4 +28,4 @@ sub as_struct {
 }
 
 1;
-# ABSTRACT: Base class for Rias::Object metadata classes
+# ABSTRACT: Base class for Perinci::Object metadata classes

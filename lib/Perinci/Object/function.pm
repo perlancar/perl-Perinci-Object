@@ -1,4 +1,4 @@
-package Rias::Object::function;
+package Perinci::Object::function;
 
 use 5.010;
 use strict;
@@ -6,7 +6,7 @@ use warnings;
 
 # VERSION
 
-use parent qw(Rias::Object::Metadata);
+use parent qw(Perinci::Object::Metadata);
 
 sub type { "function" }
 

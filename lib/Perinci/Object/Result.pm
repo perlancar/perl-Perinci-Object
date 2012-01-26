@@ -1,4 +1,4 @@
-package Rias::Object::Result;
+package Perinci::Object::Result;
 
 use 5.010;
 use strict;
@@ -86,10 +86,10 @@ sub as_struct {
 
 =head1 SYNOPSIS
 
- use Rias::Object::Result;
+ use Perinci::Object::Result;
  use Data::Dump; # for dd()
 
- my $rires = Rias::Object::Result->new([200, "OK", [1, 2, 3]]);
+ my $rires = Perinci::Object::Result->new([200, "OK", [1, 2, 3]]);
  dd $rires->is_success, # 1
     $rires->status,     # 200
     $rires->message,    # "OK"
@@ -104,8 +104,8 @@ sub as_struct {
  $rires->extra({errno=>-100});
 
  # shortcut: create a new OK result ([200, "OK"] or [200, "OK", $payload])
- $rires = Rias::Object::Result->new_ok();
- $rires = Rias::Object::Result->new_ok(42);
+ $rires = Perinci::Object::Result->new_ok();
+ $rires = Perinci::Object::Result->new_ok(42);
 
 
 =head1 DESCRIPTION

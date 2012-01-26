@@ -1,7 +1,7 @@
-Revision history for Rias::Object
+Revision history for Perinci-Object
 
-0.04     2012-01-16
+0.04     2012-01-26
 
-         First release, repackaged from Sub::Spec::Object. Now follows Rinci
-         (currently 1.1) specification instead of Sub::Spec 1.0 (but still
-         supports old sub specs).
+         First release, rename from Sub-Spec-Object to Perinci-Object. Now
+         follows Rinci (currently 1.1) specification instead of Sub::Spec
+         1.0 (but still supports old sub specs).

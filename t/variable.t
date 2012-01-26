@@ -6,7 +6,7 @@ use warnings;
 use Test::More 0.96;
 use Test::Exception;
 
-use Rias::Object;
+use Perinci::Object;
 
 my $rivar = rivar { v=>1.1 };
 

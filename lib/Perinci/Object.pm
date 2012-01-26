@@ -1,4 +1,4 @@
-package Rias::Object;
+package Perinci::Object;
 
 use 5.010;
 use strict;
@@ -11,37 +11,37 @@ our @ISA    = qw(Exporter);
 our @EXPORT = qw(risub rivar ripkg rires);
 
 sub risub {
-    require Rias::Object::function;
-    Rias::Object::function->new(@_);
+    require Perinci::Object::function;
+    Perinci::Object::function->new(@_);
 }
 
 sub rivar {
-    require Rias::Object::variable;
-    Rias::Object::variable->new(@_);
+    require Perinci::Object::variable;
+    Perinci::Object::variable->new(@_);
 }
 
 sub ripkg {
-    require Rias::Object::package;
-    Rias::Object::package->new(@_);
+    require Perinci::Object::package;
+    Perinci::Object::package->new(@_);
 }
 
 sub rires {
-    require Rias::Object::Result;
-    Rias::Object::Result->new(@_);
+    require Perinci::Object::Result;
+    Perinci::Object::Result->new(@_);
 }
 
 1;
-# ABSTRACT: Object-oriented interface for Rinci metadata/envelope result/etc
+# ABSTRACT: Object-oriented interface for Rinci-related data structure
 
 =head1 SYNOPSIS
 
- use Rias::Object; # automatically exports risub(), rivar(), ripkg(), rires()
+ use Perinci::Object; # automatically exports risub(), rivar(), ripkg(), rires()
  use Data::Dump; # for dd()
 
  # OO interface to function metadata. supports Rinci 1.1 specification as well
  # as old Sub::Spec 1.0 (will convert to 1.1).
 
- my $risub = ripkg {
+ my $risub = risub {
      summary => 'Foo',
      args => { a1 => 'int*', a2 => [str=>{default=>'a'}] },
      features => { pure=>1 },
@@ -59,7 +59,7 @@ sub rires {
 
  # OO interface to variable metadata
 
- my $ripkg = ripkg { ... };
+ my $rivar = rivar { ... };
 
  # OO interface to package metadata
 
@@ -91,19 +91,19 @@ an object-oriented interface for those data. This module provides just that.
 
 =head2 risub $meta => OBJECT
 
-Exported by default. A shortcut for Rias::Object::function->new($meta).
+Exported by default. A shortcut for Perinci::Object::function->new($meta).
 
 =head2 rivar $meta => OBJECT
 
-Exported by default. A shortcut for Rias::Object::variable->new($meta).
+Exported by default. A shortcut for Perinci::Object::variable->new($meta).
 
 =head2 ripkg $meta => OBJECT
 
-Exported by default. A shortcut for Rias::Object::package->new($meta).
+Exported by default. A shortcut for Perinci::Object::package->new($meta).
 
 =head2 rires $res => OBJECT
 
-Exported by default. A shortcut for Rias::Object::Result->new($res).
+Exported by default. A shortcut for Perinci::Object::Result->new($res).
 
 
 =head1 SEE ALSO

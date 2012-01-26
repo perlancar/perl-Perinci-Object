@@ -5,7 +5,7 @@ use strict;
 use warnings;
 use Test::More 0.96;
 
-use Rias::Object;
+use Perinci::Object;
 
 my $rires = rires [200, "OK", [1, 2, 3]];
 
