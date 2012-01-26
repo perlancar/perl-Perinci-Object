@@ -31,7 +31,7 @@ sub rires {
 }
 
 1;
-# ABSTRACT: Object-oriented interface for Rinci-related data structure
+# ABSTRACT: Object-oriented interface for Rinci-related data structures
 
 =head1 SYNOPSIS
 
