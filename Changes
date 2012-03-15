@@ -5,7 +5,7 @@ Revision history for Perinci-Object
          [INCOMPATIBLE CHANGES]
 
          - Rename 'rires' to 'envres' (to avoid confusion with the new
-           'riresmeta')
+           'riresmeta'). Rename its extra() method to meta().
 
          [ENHANCEMENTS]
 
