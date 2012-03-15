@@ -8,7 +8,12 @@ use warnings;
 
 require Exporter;
 our @ISA    = qw(Exporter);
-our @EXPORT = qw(risub rivar ripkg envres riresmeta);
+our @EXPORT = qw(rimeta risub rivar ripkg envres riresmeta);
+
+sub rimeta {
+    require Perinci::Object::Metadata;
+    Perinci::Object::Metadata->new(@_);
+}
 
 sub risub {
     require Perinci::Object::function;
@@ -44,8 +49,7 @@ sub riresmeta {
                       # envres(), riresmeta()
  use Data::Dump; # for dd()
 
- # OO interface to function metadata. supports Rinci 1.1 specification as well
- # as old Sub::Spec 1.0 (will convert to 1.1).
+ # OO interface to function metadata.
 
  my $risub = risub {
      v => 1.1,
@@ -102,6 +106,10 @@ that.
 
 
 =head1 FUNCTIONS
+
+=head2 rimeta $meta => OBJECT
+
+Exported by default. A shortcut for Perinci::Object::Metadata->new($meta).
 
 =head2 risub $meta => OBJECT
 
