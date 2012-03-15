@@ -1,5 +1,19 @@
 Revision history for Perinci-Object
 
+0.05     2012-03-15
+
+         [INCOMPATIBLE CHANGES]
+
+         - Rename 'rires' to 'envres' (to avoid confusion with the new
+           'riresmeta')
+
+         [ENHANCEMENTS]
+
+         - Add 'riresmeta'
+
+         - Add langprop() method.
+
+
 0.04     2012-01-26
 
          First release, rename from Sub-Spec-Object to Perinci-Object. Now
