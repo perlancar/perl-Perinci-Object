@@ -1,4 +1,4 @@
-package Perinci::Object::Result;
+package Perinci::Object::EnvResult;
 
 use 5.010;
 use strict;
@@ -59,7 +59,7 @@ sub payload {
     ${$self}->[2];
 }
 
-sub extra {
+sub meta {
     my ($self, $new) = @_;
     if (defined $new) {
         die "Extra must be a hashref" unless ref($new) eq 'HASH';
@@ -94,14 +94,14 @@ sub as_struct {
     $rires->status,     # 200
     $rires->message,    # "OK"
     $rires->payload,    # [1, 2, 3]
-    $rires->extra,      # undef
+    $rires->meta,       # undef
     $rires->as_struct;  # [200, "OK", [1, 2, 3]]
 
  # setting status, message, result, extra
  $rires->status(404);
  $rires->message('Not found');
  $rires->payload(undef);
- $rires->extra({errno=>-100});
+ $rires->meta({errno=>-100});
 
  # shortcut: create a new OK result ([200, "OK"] or [200, "OK", $payload])
  $rires = Perinci::Object::Result->new_ok();
@@ -132,9 +132,9 @@ Get or set message (the 2nd element).
 
 Get or set the actual payload (the 3rd element).
 
-=head2 $ssres->extra
+=head2 $ssres->meta
 
-Get or set extra (the 4th element).
+Get or set result metadata (the 4th element).
 
 =head2 $ssres->as_struct
 
@@ -147,6 +147,6 @@ True if status is between 200-299.
 
 =head1 SEE ALSO
 
-L<Sub::Spec::Object>
+L<Perinci::Object>
 
 =cut

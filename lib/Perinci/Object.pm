@@ -8,7 +8,7 @@ use warnings;
 
 require Exporter;
 our @ISA    = qw(Exporter);
-our @EXPORT = qw(risub rivar ripkg rires);
+our @EXPORT = qw(risub rivar ripkg envres riresmeta);
 
 sub risub {
     require Perinci::Object::function;
@@ -25,33 +25,43 @@ sub ripkg {
     Perinci::Object::package->new(@_);
 }
 
-sub rires {
-    require Perinci::Object::Result;
-    Perinci::Object::Result->new(@_);
+sub envres {
+    require Perinci::Object::EnvResult;
+    Perinci::Object::EnvResult->new(@_);
+}
+
+sub riresmeta {
+    require Perinci::Object::result;
+    Perinci::Object::result->new(@_);
 }
 
 1;
-# ABSTRACT: Object-oriented interface for Rinci-related data structures
+# ABSTRACT: Object-oriented interface for Rinci metadata
 
 =head1 SYNOPSIS
 
- use Perinci::Object; # automatically exports risub(), rivar(), ripkg(), rires()
+ use Perinci::Object; # automatically exports risub(), rivar(), ripkg(),
+                      # envres(), riresmeta()
  use Data::Dump; # for dd()
 
  # OO interface to function metadata. supports Rinci 1.1 specification as well
  # as old Sub::Spec 1.0 (will convert to 1.1).
 
  my $risub = risub {
-     summary => 'Foo',
-     args => { a1 => 'int*', a2 => [str=>{default=>'a'}] },
+     v => 1.1,
+     summary => 'Calculate foo and bar',
+     "summary.alt.lang.id_ID" => 'Menghitung foo dan bar',
+     args => { a1 => { schema => 'int*' }, a2 => { schema => 'str' } },
      features => { pure=>1 },
  };
- dd $risub->type,             # "function"
-    $risub->v,                # 1.0
-    $risub->arg('a1'),        # { schema=>'int*' }
-    $risub->arg('a3'),        # undef
-    $risub->feature('pure'),  # 1
-    $risub->feature('foo');   # undef
+ dd $risub->type,                         # "function"
+    $risub->v,                            # 1.0
+    $risub->arg('a1'),                    # { schema=>'int*' }
+    $risub->arg('a3'),                    # undef
+    $risub->feature('pure'),              # 1
+    $risub->feature('foo'),               # undef
+    $risub->langprop('summary'),          # 'Calculate foo and bar'
+    $risub->langprop('summary', 'id_ID'), # 'Menghitung foo dan bar'
 
  # setting arg and property
  $risub->arg('a3', 'array');  # will actually fail for 1.0 metadata
@@ -67,24 +77,28 @@ sub rires {
 
  # OO interface to enveloped result
 
- my $rires = rires [200, "OK", [1, 2, 3]];
- dd $rires->is_success, # 1
-    $rires->status,     # 200
-    $rires->message,    # "OK"
-    $rires->result,     # [1, 2, 3]
-    $rires->extra;      # undef
+ my $envres = envres [200, "OK", [1, 2, 3]];
+ dd $envres->is_success, # 1
+    $envres->status,     # 200
+    $envres->message,    # "OK"
+    $envres->result,     # [1, 2, 3]
+    $envres->meta;       # undef
 
  # setting status, message, result, extra
- $rires->status(404);
- $rires->message('Not found');
- $rires->result(undef);
- $rires->extra({errno=>-100});
+ $envres->status(404);
+ $envres->message('Not found');
+ $envres->result(undef);
+ $envres->meta({errno=>-100});
+
+ # OO interface to function/method result metadata
+ my $riresmeta = riresmeta { ... };
 
 
 =head1 DESCRIPTION
 
 L<Rinci> works using pure data structures, but sometimes it's convenient to have
-an object-oriented interface for those data. This module provides just that.
+an object-oriented interface (wrapper) for those data. This module provides just
+that.
 
 
 =head1 FUNCTIONS
