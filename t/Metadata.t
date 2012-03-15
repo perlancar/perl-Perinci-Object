@@ -14,10 +14,12 @@ my $rimeta = rimeta {
     "summary.alt.lang.id_ID" => "Bahasa",
 };
 
-is($rimeta->langprop("summary"), "English", "1 default");
-is($rimeta->langprop("summary", {lang=>"id_ID"}), "Bahasa", "1 lang=id_ID");
+is($rimeta->langprop("summary"), "English",
+   "doesn't specify default_lang -> en_US");
+is($rimeta->langprop("summary", {lang=>"id_ID"}), "Bahasa",
+   "specify lang id_ID");
 is($rimeta->langprop("summary", {lang=>"fr_FR"}), "{en_US English}",
-   "1 lang=fr_FR");
+   "specify non-existent lang fr_FR -> default_lang + marked");
 
 $rimeta = rimeta {
     v => 1.1,
@@ -26,14 +28,17 @@ $rimeta = rimeta {
     "description.alt.lang.en_US" => "Eng\nlish\n",
 };
 
-is($rimeta->langprop("description"), "Eng\nlish\n", "2 default");
+is($rimeta->langprop("description"), "Ba\nhasa\n",
+   "default_lang id_ID");
 is($rimeta->langprop("description", {lang=>"id_ID"}), "Ba\nhasa\n",
-   "2 lang=id_ID");
-is($rimeta->langprop("description", {lang=>"fr_FR"}), "{en_US Eng\nlish}\n",
-   "2 lang=fr_FR");
+   "specify lang=id_ID");
+is($rimeta->langprop("description", {lang=>"en_US"}), "Eng\nlish\n",
+   "specify lang=en_US");
+is($rimeta->langprop("description", {lang=>"fr_FR"}), "{id_ID Ba\nhasa}\n",
+   "specify non-existent lang fr_FR -> default_lang id_ID + marked");
 
-is($rimeta->langprop("description", {lang=>"fr_FR", mark_fallback_text=>0}),
-   "Eng\nlish\n",
-   "nomark");
+is($rimeta->langprop("description", {lang=>"fr_FR", mark_different_lang=>0}),
+   "Ba\nhasa\n",
+   "mark_different_lang=0");
 
 done_testing();
