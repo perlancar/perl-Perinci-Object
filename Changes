@@ -1,5 +1,17 @@
 Revision history for Perinci-Object
 
+0.07     2012-03-15
+
+         [FIXES]
+
+         - Fix behavior of langprop(), now language defaults to metadata's
+           'default_lang' property.
+
+         [INCOMPATIBLE CHANGES]
+
+         - langprop(): rename option 'mark_fallback_text' to 'mark_different_lang'.
+
+
 0.06     2012-03-15
 
          [ENHANCEMENTS]
