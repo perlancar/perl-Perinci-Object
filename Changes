@@ -1,5 +1,12 @@
 Revision history for Perinci-Object
 
+0.09     2012-03-22
+
+         No functional changes. Try to work around dependency problem (some
+         systems cannot find SHARYANTO::String::Util, new in SHARYANTO-Utils
+         0.16+).
+
+
 0.08     2012-03-20
 
          No functional changes. Fix Perl version dependency ('parent' requires
