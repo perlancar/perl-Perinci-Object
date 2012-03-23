@@ -1,5 +1,12 @@
 Revision history for Perinci-Object
 
+0.10     2012-03-23
+
+         No functional changes. Resolve circular dependency problem with
+         SHARYANTO-Utils by splitting SHARYANTO::String::Util to its own dist.
+         [RT#75987, thanks Slaven]
+
+
 0.09     2012-03-22
 
          No functional changes. Try to work around dependency problem (some
