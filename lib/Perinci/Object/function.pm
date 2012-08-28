@@ -47,42 +47,43 @@ sub arg {
 
 =head1 SYNOPSIS
 
- use Sub::Spec::Object::Response;
+ use Perinci::Object::Response;
 
  $SPEC{foo} = {
-     spec_version=>1.1,
-     args => { b => {schema=>'int'} },
-     features => {undo=>1},
+     v        => 1.1,
+     args     => { b => {schema=>'int', req=>0} },
+     features => {idempotent=>1},
  };
- my $ssspec = ssspec $SPEC{foo};
- print $ssres->feature('undo'), # 1
-       $ssres->arg('a');        # undef
+ my $risub = risub $SPEC{foo};
+ print $risub->feature('idempotent'), # 1
+       $risub->arg('b')->{req},       # 0
+       $risub->arg('a');              # undef
 
 
 =head1 DESCRIPTION
 
-This class provides an object-oriented interface for sub spec.
+This class provides an object-oriented interface for function metadata.
 
 
 =head1 METHODS
 
-=head2 new($spec) => OBJECT
+=head2 new($meta) => OBJECT
 
-Create a new object from $spec. If $spec is undef, creates an empty spec.
+Create a new object from $meta. If $meta is undef, creates an empty metadata.
 
-=head2 $ssspec->feature(NAME[, VALUE])
+=head2 $risub->feature(NAME[, VALUE])
 
-Get or set named feature (B<features> key in spec). If a feature doesn't exist,
-undef will be returned.
+Get or set named feature (B<features> property in metadata). If a feature
+doesn't exist, undef will be returned.
 
-=head2 $ssres->arg(NAME[, VALUE])
+=head2 $risub->arg(NAME[, VALUE])
 
-Get or set argument (B<args> key in spec). If an argument doesn't exist, undef
-will be returned.
+Get or set argument (B<args> property in metadata). If an argument doesn't
+exist, undef will be returned.
 
 
 =head1 SEE ALSO
 
-L<Sub::Spec::Object>
+L<Perinci::Object>
 
 =cut
