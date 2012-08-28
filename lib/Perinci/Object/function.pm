@@ -26,6 +26,19 @@ sub feature {
     }
 }
 
+sub features {
+    my $self = shift;
+    ${$self}->{features} // {};
+}
+
+# transaction can be used to emulate dry run, by calling with -tx_action =>
+# 'check_state' only
+sub can_dry_run {
+    my $self = shift;
+    my $ff = ${$self}->{features} // {};
+    $ff->{dry_run} // $ff->{tx} && $ff->{tx}{v} == 2;
+}
+
 # convenience for accessing args property
 sub arg {
     my $self = shift;
@@ -47,7 +60,7 @@ sub arg {
 
 =head1 SYNOPSIS
 
- use Perinci::Object::Response;
+ use Perinci::Object;
 
  $SPEC{foo} = {
      v        => 1.1,

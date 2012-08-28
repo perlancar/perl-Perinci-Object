@@ -45,6 +45,20 @@ $risub = risub { v=>1.1, features => {undo=>1}, args => {i=>{schema=>'int'}} };
 is($risub->feature('undo'), 1, "1.1 feature (2)");
 is_deeply($risub->arg('i'), {schema=>'int'}, "1.1 arg (2)");
 
+subtest "features" => sub {
+    $risub = risub { v=>1.1 };
+    is_deeply($risub->features, {}, "empty");
+    $risub = risub { v=>1.1, features => {undo=>1} };
+    is_deeply($risub->features, {undo=>1}, "empty");
+};
+
+subtest "can_dry_run" => sub {
+    $risub = risub { v=>1.1, features => {dry_run=>1}};
+    ok($risub->can_dry_run, "from dry_run feature");
+    $risub = risub { v=>1.1, features => {tx=>{v=>2}}};
+    ok($risub->can_dry_run, "from tx feature");
+};
+
 # ---
 
 done_testing();
