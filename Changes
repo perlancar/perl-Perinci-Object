@@ -1,26 +1,31 @@
 Revision history for Perinci-Object
 
-0.10     2012-03-23
+0.11     2012-08-29 (SHARYANTO)
+
+         - function: Add features() and can_dry_run().
+
+
+0.10     2012-03-23 (SHARYANTO)
 
          No functional changes. Resolve circular dependency problem with
          SHARYANTO-Utils by splitting SHARYANTO::String::Util to its own dist.
          [RT#75987, thanks Slaven]
 
 
-0.09     2012-03-22
+0.09     2012-03-22 (SHARYANTO)
 
          No functional changes. Try to work around dependency problem (some
          systems cannot find SHARYANTO::String::Util, new in SHARYANTO-Utils
          0.16+).
 
 
-0.08     2012-03-20
+0.08     2012-03-20 (SHARYANTO)
 
          No functional changes. Fix Perl version dependency ('parent' requires
          5.10.1).
 
 
-0.07     2012-03-15
+0.07     2012-03-15 (SHARYANTO)
 
          [FIXES]
 
@@ -32,14 +37,14 @@ Revision history for Perinci-Object
          - langprop(): rename option 'mark_fallback_text' to 'mark_different_lang'.
 
 
-0.06     2012-03-15
+0.06     2012-03-15 (SHARYANTO)
 
          [ENHANCEMENTS]
 
          - Add 'rimeta'.
 
 
-0.05     2012-03-15
+0.05     2012-03-15 (SHARYANTO)
 
          [INCOMPATIBLE CHANGES]
 
@@ -53,7 +58,7 @@ Revision history for Perinci-Object
          - Add langprop() method.
 
 
-0.04     2012-01-26
+0.04     2012-01-26 (SHARYANTO)
 
          First release, rename from Sub-Spec-Object to Perinci-Object. Now
          follows Rinci (currently 1.1) specification instead of Sub::Spec
