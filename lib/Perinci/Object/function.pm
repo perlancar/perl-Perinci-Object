@@ -84,10 +84,20 @@ This class provides an object-oriented interface for function metadata.
 
 Create a new object from $meta. If $meta is undef, creates an empty metadata.
 
+=head2 $risub->features => HASH
+
+Return the C<features> property.
+
 =head2 $risub->feature(NAME[, VALUE])
 
 Get or set named feature (B<features> property in metadata). If a feature
 doesn't exist, undef will be returned.
+
+=head2 $risub->can_dry_run => BOOL
+
+Check whether function can do dry run, either from the C<dry_run> feature, or
+from the C<tx> feature. (Transaction can be used to emulate dry run, by calling
+the function with C<< -tx_action => 'check_state' >> only.)
 
 =head2 $risub->arg(NAME[, VALUE])
 
