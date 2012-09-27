@@ -123,7 +123,7 @@ Exported by default. A shortcut for Perinci::Object::variable->new($meta).
 
 Exported by default. A shortcut for Perinci::Object::package->new($meta).
 
-=head2 rires $res => OBJECT
+=head2 riresmeta $res => OBJECT
 
 Exported by default. A shortcut for Perinci::Object::Result->new($res).
 
