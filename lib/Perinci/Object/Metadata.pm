@@ -34,6 +34,7 @@ sub langprop {
 
     my $deflang = ${$self}->{default_lang} // "en_US";
     my $olang   = $opts->{lang} || $ENV{LANGUAGE} || $ENV{LANG} || $deflang;
+    $olang =~ s/\W.+//; # change "en_US.UTF-8" to "en_US"
     my $mark    = $opts->{mark_different_lang} // 1;
     #print "deflang=$deflang, olang=$olang, mark_different_lang=$mark\n";
 
