@@ -1,5 +1,11 @@
 Revision history for Perinci-Object
 
+0.13     2014-01-03 (SHARYANTO)
+
+         - Trim language from locale env (e.g. "en_US.UTF-8" to "en_US") to
+           avoid unnecessary mark.
+
+
 0.12     2013-12-11 (SHARYANTO)
 
          - langprop() observers LANG/LANGUAGE environment.
