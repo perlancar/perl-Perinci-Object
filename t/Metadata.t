@@ -21,6 +21,20 @@ my $rimeta = rimeta {
        "doesn't specify default_lang -> en_US");
 }
 
+{
+    local $ENV{LANG} = "en_US.UTF-8";
+    local $ENV{LANGUAGE};
+    is($rimeta->langprop("summary"), "English",
+       "value from LANG is trimmed");
+}
+
+{
+    local $ENV{LANG};
+    local $ENV{LANGUANGE} = "en_US.UTF-8";
+    is($rimeta->langprop("summary"), "English",
+       "value from LANG is trimmed");
+}
+
 is($rimeta->langprop("summary", {lang=>"id_ID"}), "Bahasa",
    "specify lang id_ID");
 
