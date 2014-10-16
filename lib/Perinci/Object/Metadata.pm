@@ -1,11 +1,12 @@
 package Perinci::Object::Metadata;
 
+# DATE
+# VERSION
+
 use 5.010;
 use strict;
 use warnings;
 use SHARYANTO::String::Util qw(trim_blank_lines);
-
-# VERSION
 
 sub new {
     my ($class, $meta) = @_;

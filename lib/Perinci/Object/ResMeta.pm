@@ -1,10 +1,11 @@
 package Perinci::Object::ResMeta;
 
+# DATE
+# VERSION
+
 use 5.010;
 use strict;
 use warnings;
-
-# VERSION
 
 use parent qw(Perinci::Object::Metadata);
 
@@ -18,4 +19,3 @@ sub type { "resmeta" }
 =head2 $riresmeta->type => str
 
 Will return C<resmeta>.
-
