@@ -12,6 +12,9 @@ my $rimeta = rimeta {
     v => 1.1,
     summary => "English",
     "summary.alt.lang.id_ID" => "Bahasa",
+
+    description => "English d",
+    "description.alt.lang.id" => "Bahasa d",
 };
 
 {
@@ -37,6 +40,9 @@ my $rimeta = rimeta {
 
 is($rimeta->langprop("summary", {lang=>"id_ID"}), "Bahasa",
    "specify lang id_ID");
+
+is($rimeta->langprop("description", {lang=>"id"}), "Bahasa d",
+   "specify lang id");
 
 {
     local $ENV{LANG};

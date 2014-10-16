@@ -70,9 +70,15 @@ sub langprop {
 
 =head1 METHODS
 
+=head2 new => obj
+
+Constructor.
+
 =head2 v
 
 =head2 as_struct
+
+=head2 type => str
 
 =head2 langprop($prop, \%opts)
 

@@ -1,5 +1,13 @@
 Revision history for Perinci-Object
 
+0.14     2014-10-16 (PERLANCAR)
+
+         - langprop(): Search PROP.alt.lang.xx in addition to
+           PROP.alt.lang.xx_XX.
+
+         - Rename module files.
+
+
 0.13     2014-01-03 (SHARYANTO)
 
          - Trim language from locale env (e.g. "en_US.UTF-8" to "en_US") to
