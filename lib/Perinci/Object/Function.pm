@@ -1,4 +1,4 @@
-package Perinci::Object::function;
+package Perinci::Object::Function;
 
 use 5.010;
 use strict;
@@ -83,6 +83,10 @@ This class provides an object-oriented interface for function metadata.
 =head2 new($meta) => OBJECT
 
 Create a new object from $meta. If $meta is undef, creates an empty metadata.
+
+=head2 $risub->type => str
+
+Will return C<function>.
 
 =head2 $risub->features => HASH
 

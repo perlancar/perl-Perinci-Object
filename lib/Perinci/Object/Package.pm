@@ -1,4 +1,4 @@
-package Perinci::Object::package;
+package Perinci::Object::Package;
 
 use 5.010;
 use strict;
@@ -12,3 +12,10 @@ sub type { "package" }
 
 1;
 # ABSTRACT: Represent package metadata
+
+=head1 METHODS
+
+=head2 $ripkg->type => str
+
+Will return C<package>.
+

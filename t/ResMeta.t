@@ -10,6 +10,6 @@ use Perinci::Object;
 
 my $riresmeta = riresmeta { };
 
-is($riresmeta->type, "result", "type");
+is($riresmeta->type, "resmeta", "type");
 
 done_testing();

@@ -1,4 +1,4 @@
-package Perinci::Object::variable;
+package Perinci::Object::Variable;
 
 use 5.010;
 use strict;
@@ -12,3 +12,10 @@ sub type { "variable" }
 
 1;
 # ABSTRACT: Represent variable metadata
+
+=head1 METHODS
+
+=head2 $rivar->type => str
+
+Will return C<variable>.
+

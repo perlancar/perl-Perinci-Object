@@ -16,18 +16,18 @@ sub rimeta {
 }
 
 sub risub {
-    require Perinci::Object::function;
-    Perinci::Object::function->new(@_);
+    require Perinci::Object::Function;
+    Perinci::Object::Function->new(@_);
 }
 
 sub rivar {
-    require Perinci::Object::variable;
-    Perinci::Object::variable->new(@_);
+    require Perinci::Object::Variable;
+    Perinci::Object::Variable->new(@_);
 }
 
 sub ripkg {
-    require Perinci::Object::package;
-    Perinci::Object::package->new(@_);
+    require Perinci::Object::Package;
+    Perinci::Object::Package->new(@_);
 }
 
 sub envres {
@@ -36,8 +36,8 @@ sub envres {
 }
 
 sub riresmeta {
-    require Perinci::Object::result;
-    Perinci::Object::result->new(@_);
+    require Perinci::Object::ResMeta;
+    Perinci::Object::ResMeta->new(@_);
 }
 
 1;
@@ -113,19 +113,23 @@ Exported by default. A shortcut for Perinci::Object::Metadata->new($meta).
 
 =head2 risub $meta => OBJECT
 
-Exported by default. A shortcut for Perinci::Object::function->new($meta).
+Exported by default. A shortcut for Perinci::Object::Function->new($meta).
 
 =head2 rivar $meta => OBJECT
 
-Exported by default. A shortcut for Perinci::Object::variable->new($meta).
+Exported by default. A shortcut for Perinci::Object::Variable->new($meta).
 
 =head2 ripkg $meta => OBJECT
 
-Exported by default. A shortcut for Perinci::Object::package->new($meta).
+Exported by default. A shortcut for Perinci::Object::Package->new($meta).
 
-=head2 riresmeta $res => OBJECT
+=head2 envres $res => OBJECT
 
-Exported by default. A shortcut for Perinci::Object::Result->new($res).
+Exported by default. A shortcut for Perinci::Object::EnvResult->new($res).
+
+=head2 riresmeta $resmeta => OBJECT
+
+Exported by default. A shortcut for Perinci::Object::ResMeta->new($res).
 
 
 =head1 SEE ALSO

@@ -86,10 +86,10 @@ sub as_struct {
 
 =head1 SYNOPSIS
 
- use Perinci::Object::Result;
+ use Perinci::Object::EnvResult;
  use Data::Dump; # for dd()
 
- my $rires = Perinci::Object::Result->new([200, "OK", [1, 2, 3]]);
+ my $rires = Perinci::Object::EnvResult->new([200, "OK", [1, 2, 3]]);
  dd $rires->is_success, # 1
     $rires->status,     # 200
     $rires->message,    # "OK"
@@ -104,8 +104,8 @@ sub as_struct {
  $rires->meta({errno=>-100});
 
  # shortcut: create a new OK result ([200, "OK"] or [200, "OK", $payload])
- $rires = Perinci::Object::Result->new_ok();
- $rires = Perinci::Object::Result->new_ok(42);
+ $rires = Perinci::Object::EnvResult->new_ok();
+ $rires = Perinci::Object::EnvResult->new_ok(42);
 
 
 =head1 DESCRIPTION
@@ -119,6 +119,11 @@ L<Rinci::function> for more details).
 =head2 new($res) => OBJECT
 
 Create a new object from $res enveloped result array.
+
+=head2 new_ok([ $actual_res ]) => OBJECT
+
+Shortcut for C<< new([200,"OK",$actual_res]) >>, or just C<< new([200,"OK"]) >> 
+if C<$actual_res> is not specified.
 
 =head2 $ssres->status
 
