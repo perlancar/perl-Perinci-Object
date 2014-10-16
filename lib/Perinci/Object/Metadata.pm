@@ -35,6 +35,7 @@ sub langprop {
     my $deflang = ${$self}->{default_lang} // "en_US";
     my $olang   = $opts->{lang} || $ENV{LANGUAGE} || $ENV{LANG} || $deflang;
     $olang =~ s/\W.+//; # change "en_US.UTF-8" to "en_US"
+    (my $olang2 = $olang) =~ s/\A([a-z]{2})_[A-Z]{2}\z/$1/; # change "en_US" to "en"
     my $mark    = $opts->{mark_different_lang} // 1;
     #print "deflang=$deflang, olang=$olang, mark_different_lang=$mark\n";
 
@@ -42,7 +43,11 @@ sub langprop {
     if ($olang eq $deflang) {
         @k = ([$olang, $prop, 0]);
     } else {
-        @k = ([$olang, "$prop.alt.lang.$olang", 0], [$deflang, $prop, $mark]);
+        @k = (
+            [$olang, "$prop.alt.lang.$olang", 0],
+            ([$olang2, "$prop.alt.lang.$olang2", 0]) x !!($olang2 ne $olang),
+            [$deflang, $prop, $mark],
+        );
     }
 
     for my $k (@k) {
