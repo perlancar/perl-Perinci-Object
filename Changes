@@ -1,5 +1,12 @@
 Revision history for Perinci-Object
 
+0.15    2014-10-20 (PERLANCAR)
+
+	- No functional changes.
+
+	- Fix typo in test which caused CT failure reports.
+
+
 0.14     2014-10-16 (PERLANCAR)
 
          - langprop(): Search PROP.alt.lang.xx in addition to
