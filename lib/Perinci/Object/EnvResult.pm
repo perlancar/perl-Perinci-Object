@@ -89,23 +89,23 @@ sub as_struct {
  use Perinci::Object::EnvResult;
  use Data::Dump; # for dd()
 
- my $rires = Perinci::Object::EnvResult->new([200, "OK", [1, 2, 3]]);
- dd $rires->is_success, # 1
-    $rires->status,     # 200
-    $rires->message,    # "OK"
-    $rires->payload,    # [1, 2, 3]
-    $rires->meta,       # undef
-    $rires->as_struct;  # [200, "OK", [1, 2, 3]]
+ my $envres = Perinci::Object::EnvResult->new([200, "OK", [1, 2, 3]]);
+ dd $envres->is_success, # 1
+    $envres->status,     # 200
+    $envres->message,    # "OK"
+    $envres->payload,    # [1, 2, 3]
+    $envres->meta,       # undef
+    $envres->as_struct;  # [200, "OK", [1, 2, 3]]
 
  # setting status, message, result, extra
- $rires->status(404);
- $rires->message('Not found');
- $rires->payload(undef);
- $rires->meta({errno=>-100});
+ $envres->status(404);
+ $envres->message('Not found');
+ $envres->payload(undef);
+ $envres->meta({errno=>-100});
 
  # shortcut: create a new OK result ([200, "OK"] or [200, "OK", $payload])
- $rires = Perinci::Object::EnvResult->new_ok();
- $rires = Perinci::Object::EnvResult->new_ok(42);
+ $envres = Perinci::Object::EnvResult->new_ok();
+ $envres = Perinci::Object::EnvResult->new_ok(42);
 
 
 =head1 DESCRIPTION
@@ -122,30 +122,30 @@ Create a new object from $res enveloped result array.
 
 =head2 new_ok([ $actual_res ]) => OBJECT
 
-Shortcut for C<< new([200,"OK",$actual_res]) >>, or just C<< new([200,"OK"]) >> 
+Shortcut for C<< new([200,"OK",$actual_res]) >>, or just C<< new([200,"OK"]) >>
 if C<$actual_res> is not specified.
 
-=head2 $ssres->status
+=head2 $envres->status
 
 Get or set status (the 1st element).
 
-=head2 $ssres->message
+=head2 $envres->message
 
 Get or set message (the 2nd element).
 
-=head2 $ssres->payload
+=head2 $envres->payload
 
 Get or set the actual payload (the 3rd element).
 
-=head2 $ssres->meta
+=head2 $envres->meta
 
 Get or set result metadata (the 4th element).
 
-=head2 $ssres->as_struct
+=head2 $envres->as_struct
 
 Return the represented data structure.
 
-=head2 $ssres->is_success
+=head2 $envres->is_success
 
 True if status is between 200-299.
 

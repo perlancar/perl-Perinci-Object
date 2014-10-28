@@ -9,7 +9,7 @@ use warnings;
 
 require Exporter;
 our @ISA    = qw(Exporter);
-our @EXPORT = qw(rimeta risub rivar ripkg envres riresmeta);
+our @EXPORT = qw(rimeta risub rivar ripkg envres envresmulti riresmeta);
 
 sub rimeta {
     require Perinci::Object::Metadata;
@@ -36,6 +36,11 @@ sub envres {
     Perinci::Object::EnvResult->new(@_);
 }
 
+sub envresmulti {
+    require Perinci::Object::EnvResultMulti;
+    Perinci::Object::EnvResultMulti->new(@_);
+}
+
 sub riresmeta {
     require Perinci::Object::ResMeta;
     Perinci::Object::ResMeta->new(@_);
@@ -47,7 +52,7 @@ sub riresmeta {
 =head1 SYNOPSIS
 
  use Perinci::Object; # automatically exports risub(), rivar(), ripkg(),
-                      # envres(), riresmeta()
+                      # envres(), envresmulti(), riresmeta()
  use Data::Dump; # for dd()
 
  # OO interface to function metadata.
@@ -127,6 +132,10 @@ Exported by default. A shortcut for Perinci::Object::Package->new($meta).
 =head2 envres $res => OBJECT
 
 Exported by default. A shortcut for Perinci::Object::EnvResult->new($res).
+
+=head2 envresmulti $res => OBJECT
+
+Exported by default. A shortcut for Perinci::Object::EnvResultMulti->new($res).
 
 =head2 riresmeta $resmeta => OBJECT
 
