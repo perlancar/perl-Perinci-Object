@@ -1,5 +1,14 @@
 Revision history for Perinci-Object
 
+0.18    2014-10-29 (PERLANCAR)
+
+	- [Incompatible change] envresmulti(): change 'response'
+	  terminology to 'result' to follow Rinci 1.1.63, so now the method
+	  add_response() is renamed to add_result(), and the result
+	  metadata property is now the correct 'results' and not
+	  'responses'.
+
+
 0.17    2014-10-28 (PERLANCAR)
 
 	[INCOMPATIBLE CHANGES]
