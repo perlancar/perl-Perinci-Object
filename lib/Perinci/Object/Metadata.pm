@@ -30,8 +30,14 @@ sub as_struct {
 }
 
 sub langprop {
-    my ($self, $prop, $opts) = @_;
-    $opts //= {};
+    my $self = shift;
+    my $opts;
+    if (ref($_[0]) eq 'HASH') {
+        $opts = shift;
+    } else {
+        $opts = {};
+    }
+    my $prop = shift;
 
     my $deflang = ${$self}->{default_lang} // "en_US";
     my $olang   = $opts->{lang} || $ENV{LANGUAGE} || $ENV{LANG} || $deflang;

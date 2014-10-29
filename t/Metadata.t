@@ -38,27 +38,27 @@ my $rimeta = rimeta {
        "value from LANG is trimmed");
 }
 
-is($rimeta->langprop("summary", {lang=>"id_ID"}), "Bahasa",
+is($rimeta->langprop({lang=>"id_ID"}, "summary"), "Bahasa",
    "specify lang id_ID");
 
-is($rimeta->langprop("description", {lang=>"id"}), "Bahasa d",
+is($rimeta->langprop({lang=>"id"}, "description"), "Bahasa d",
    "specify lang id");
 
 {
     local $ENV{LANG};
     local $ENV{LANGUAGE} = "id_ID";
-    is($rimeta->langprop("summary", {}), "Bahasa",
+    is($rimeta->langprop("summary"), "Bahasa",
        "specify lang id_ID via env LANGUAGE");
 }
 
 {
     local $ENV{LANG} = "id_ID";
     local $ENV{LANGUAGE};
-    is($rimeta->langprop("summary", {}), "Bahasa",
+    is($rimeta->langprop("summary"), "Bahasa",
        "specify lang id_ID via env LANG");
 }
 
-is($rimeta->langprop("summary", {lang=>"fr_FR"}), "{en_US English}",
+is($rimeta->langprop({lang=>"fr_FR"}, "summary"), "{en_US English}",
    "specify non-existent lang fr_FR -> default_lang + marked");
 
 $rimeta = rimeta {
@@ -75,15 +75,15 @@ $rimeta = rimeta {
        "default_lang id_ID");
 }
 
-is($rimeta->langprop("description", {lang=>"id_ID"}), "Ba\nhasa\n",
+is($rimeta->langprop({lang=>"id_ID"}, "description"), "Ba\nhasa\n",
    "specify lang=id_ID");
-is($rimeta->langprop("description", {lang=>"en_US"}), "Eng\nlish\n",
+is($rimeta->langprop({lang=>"en_US"}, "description"), "Eng\nlish\n",
    "specify lang=en_US");
-is($rimeta->langprop("description", {lang=>"fr_FR"}), "{id_ID Ba\nhasa}\n",
+is($rimeta->langprop({lang=>"fr_FR"}, "description"), "{id_ID Ba\nhasa}\n",
    "specify non-existent lang fr_FR -> default_lang id_ID + marked");
 
-is($rimeta->langprop("description", {lang=>"fr_FR", mark_different_lang=>0}),
+is($rimeta->langprop({lang=>"fr_FR", mark_different_lang=>0}, "description"),
    "Ba\nhasa\n",
    "mark_different_lang=0");
 
-done_testing();
+done_testing;

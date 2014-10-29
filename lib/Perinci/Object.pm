@@ -64,14 +64,14 @@ sub riresmeta {
      args => { a1 => { schema => 'int*' }, a2 => { schema => 'str' } },
      features => { pure=>1 },
  };
- dd $risub->type,                         # "function"
-    $risub->v,                            # 1.0
-    $risub->arg('a1'),                    # { schema=>'int*' }
-    $risub->arg('a3'),                    # undef
-    $risub->feature('pure'),              # 1
-    $risub->feature('foo'),               # undef
-    $risub->langprop('summary'),          # 'Calculate foo and bar'
-    $risub->langprop('summary', 'id_ID'), # 'Menghitung foo dan bar'
+ dd $risub->type,                                 # "function"
+    $risub->v,                                    # 1.1
+    $risub->arg('a1'),                            # { schema=>'int*' }
+    $risub->arg('a3'),                            # undef
+    $risub->feature('pure'),                      # 1
+    $risub->feature('foo'),                       # undef
+    $risub->langprop('summary'),                  # 'Calculate foo and bar'
+    $risub->langprop({lang=>'id_ID'}, 'summary'), # 'Menghitung foo dan bar'
 
  # setting arg and property
  $risub->arg('a3', 'array');  # will actually fail for 1.0 metadata
