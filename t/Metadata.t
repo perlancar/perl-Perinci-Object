@@ -87,6 +87,9 @@ is($rimeta->langprop({lang=>"fr_FR", mark_different_lang=>0}, "description"),
    "mark_different_lang=0");
 
 subtest set => sub {
+    local $ENV{LANG};
+    local $ENV{LANGUAGE};
+
     my $rimeta = rimeta({
         v => 1.1,
         summary => "English",
@@ -96,6 +99,47 @@ subtest set => sub {
     $rimeta->langprop({lang=>"id_ID"}, "summary", "bahasa");
     is_deeply($$rimeta, {v=>1.1, summary=>"language",
                          "summary.alt.lang.id_ID"=>"bahasa"});
+};
+
+subtest "langprop shortcuts (summary, et al)" => sub {
+    local $ENV{LANG};
+    local $ENV{LANGUAGE};
+
+    my $rimeta = rimeta({
+        v => 1.1,
+        name        => "n.en", "name.alt.lang.id_ID"        => "n.id",
+        caption     => "c.en", "caption.alt.lang.id_ID"     => "c.id",
+        summary     => "s.en", "summary.alt.lang.id_ID"     => "s.id",
+        description => "d.en", "description.alt.lang.id_ID" => "d.id",
+    });
+
+    is($rimeta->name, "n.en");
+    is($rimeta->name({lang=>"id_ID"}), "n.id");
+    $rimeta->name("n2.en");
+    is($rimeta->name, "n2.en");
+    $rimeta->name({lang=>"id_ID"}, "n2.id");
+    is($rimeta->name({lang=>"id_ID"}), "n2.id");
+
+    is($rimeta->caption, "c.en");
+    is($rimeta->caption({lang=>"id_ID"}), "c.id");
+    $rimeta->caption("c2.en");
+    is($rimeta->caption, "c2.en");
+    $rimeta->caption({lang=>"id_ID"}, "c2.id");
+    is($rimeta->caption({lang=>"id_ID"}), "c2.id");
+
+    is($rimeta->summary, "s.en");
+    is($rimeta->summary({lang=>"id_ID"}), "s.id");
+    $rimeta->summary("s2.en");
+    is($rimeta->summary, "s2.en");
+    $rimeta->summary({lang=>"id_ID"}, "s2.id");
+    is($rimeta->summary({lang=>"id_ID"}), "s2.id");
+
+    is($rimeta->description, "d.en");
+    is($rimeta->description({lang=>"id_ID"}), "d.id");
+    $rimeta->description("d2.en");
+    is($rimeta->description, "d2.en");
+    $rimeta->description({lang=>"id_ID"}, "d2.id");
+    is($rimeta->description({lang=>"id_ID"}), "d2.id");
 };
 
 done_testing;

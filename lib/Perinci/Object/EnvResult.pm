@@ -1,10 +1,11 @@
 package Perinci::Object::EnvResult;
 
+# DATE
+# VERSION
+
 use 5.010;
 use strict;
 use warnings;
-
-# VERSION
 
 sub new {
     my ($class, $res) = @_;

@@ -80,6 +80,50 @@ sub langprop {
     $v;
 }
 
+sub name {
+    my $self = shift;
+    my $opts;
+    if (@_ && ref($_[0]) eq 'HASH') {
+        $opts = shift;
+    } else {
+        $opts = {};
+    }
+    $self->langprop($opts, "name", @_);
+}
+
+sub caption {
+    my $self = shift;
+    my $opts;
+    if (@_ && ref($_[0]) eq 'HASH') {
+        $opts = shift;
+    } else {
+        $opts = {};
+    }
+    $self->langprop($opts, "caption", @_);
+}
+
+sub summary {
+    my $self = shift;
+    my $opts;
+    if (@_ && ref($_[0]) eq 'HASH') {
+        $opts = shift;
+    } else {
+        $opts = {};
+    }
+    $self->langprop($opts, "summary", @_);
+}
+
+sub description {
+    my $self = shift;
+    my $opts;
+    if (@_ && ref($_[0]) eq 'HASH') {
+        $opts = shift;
+    } else {
+        $opts = {};
+    }
+    $self->langprop($opts, "description", @_);
+}
+
 1;
 # ABSTRACT: Base class for Perinci::Object metadata classes
 
@@ -89,15 +133,21 @@ sub langprop {
 
 Constructor.
 
-=head2 v
+=head2 v => float
 
-=head2 as_struct
+Get version.
+
+=head2 as_struct => hash
+
+Get underlying data structure.
 
 =head2 type => str
 
-=head2 langprop($prop, \%opts)
+Return type (e.g. C<function>, C<package>).
 
-Get property value in the specified language (i.e., either in C<prop> or
+=head2 langprop([ \%opts, ]$prop[, $new_value])
+
+Get or set property value in the specified language (i.e., either in C<prop> or
 C<prop.alt.lang.XXX> properties).
 
 Known options:
@@ -117,5 +167,21 @@ for that language is unavailable will result in C<"{en_US I love you}"> being
 returned.
 
 =back
+
+=head2 name([ $new_value ]) => $value
+
+Get or set C<name> property. Will call C<langprop()>.
+
+=head2 summary([ $new_value ]) => $value
+
+Get or set C<summary> property. Will call C<langprop()>.
+
+=head2 description([ $new_value ]) => $value
+
+Get or set C<description> property. Will call C<langprop()>.
+
+=head2 caption([ $new_value ]) => $value
+
+Get or set C<caption> property. Will call C<langprop()>.
 
 =cut
