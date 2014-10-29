@@ -1,5 +1,22 @@
 Revision history for Perinci-Object
 
+0.17    2014-10-28 (PERLANCAR)
+
+	[INCOMPATIBLE CHANGES]
+
+        - langprop(): \%opts is now optional first argument instead of the
+          second. This change is to make the syntax of setting a langprop
+          consistent with others, e.g. $rimeta->langprop("summary", "new value")
+          and $rimeta->langprop({lang=>"id_ID"}, "summary", "Nilai baru").
+
+        [ENHANCEMENTS]
+
+        - Allow setting a langprop.
+
+        - Add convenient methods: name(), caption(), summary(), description().
+          They all use langprop() under the hood.
+
+
 0.16    2014-10-28 (PERLANCAR)
 
 	- Add envresmulti() (Perinci::Object::EnvResultMulti).
