@@ -86,4 +86,16 @@ is($rimeta->langprop({lang=>"fr_FR", mark_different_lang=>0}, "description"),
    "Ba\nhasa\n",
    "mark_different_lang=0");
 
+subtest set => sub {
+    my $rimeta = rimeta({
+        v => 1.1,
+        summary => "English",
+    });
+    $rimeta->langprop("summary", "language");
+    is_deeply($$rimeta, {v=>1.1, summary=>"language"});
+    $rimeta->langprop({lang=>"id_ID"}, "summary", "bahasa");
+    is_deeply($$rimeta, {v=>1.1, summary=>"language",
+                         "summary.alt.lang.id_ID"=>"bahasa"});
+};
+
 done_testing;

@@ -57,18 +57,27 @@ sub langprop {
         );
     }
 
+    my $v;
+  GET:
     for my $k (@k) {
         #print "k=".join(", ", @$k)."\n";
-        my $v = ${$self}->{$k->[1]};
+        $v = ${$self}->{$k->[1]};
         if (defined $v) {
             if ($k->[2]) {
                 my $has_nl = $v =~ s/\n\z//;
                 $v = "{$k->[0] $v}" . ($has_nl ? "\n" : "");
             }
-            return trim_blank_lines($v);
+            $v = trim_blank_lines($v);
+            last GET;
         }
     }
-    return undef;
+
+    if (@_) {
+        # set value
+        ${$self}->{$k[0][1]} = $_[0];
+    }
+
+    $v;
 }
 
 1;
