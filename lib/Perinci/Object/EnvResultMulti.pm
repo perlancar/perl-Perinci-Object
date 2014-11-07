@@ -24,7 +24,7 @@ sub add_result {
     push @{ ${$self}->[3]{results} },
         {%{ $extra // {} }, status=>$status, message=>$message};
     for (@{ ${$self}->[3]{results} // [] }) {
-        if ($_->{status} =~ /\A2/) {
+        if ($_->{status} =~ /\A(2|304)/) {
             $num_ok++;
         } else {
             $num_nok++;
