@@ -6,7 +6,7 @@ package Perinci::Object::Metadata;
 use 5.010;
 use strict;
 use warnings;
-use SHARYANTO::String::Util qw(trim_blank_lines);
+use String::Trim::More qw(trim_blank_lines);
 
 sub new {
     my ($class, $meta) = @_;
