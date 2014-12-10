@@ -1,5 +1,13 @@
 Revision history for Perinci-Object
 
+0.20    2014-12-10 (PERLANCAR)
+
+	- No functional changes.
+
+	- Use new name of renamed/split module SHARYANTO::String::Util ->
+	  String::Trim::More.
+
+
 0.19    2014-11-07 (PERLANCAR)
 
 	- Regard status 304 as success.
