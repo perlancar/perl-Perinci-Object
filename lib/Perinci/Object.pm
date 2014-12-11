@@ -103,6 +103,22 @@ sub riresmeta {
  # OO interface to function/method result metadata
  my $riresmeta = riresmeta { ... };
 
+ # an example of using riresmulti()
+ sub myfunc {
+     ...
+
+     my $envres = envresmulti();
+
+     # add result for each item
+     $envres->add_result(200, "OK", {item_id=>1});
+     $envres->add_result(202, "OK", {item_id=>2, note=>"blah"});
+     $envres->add_result(404, "Not found", {item_id=>3});
+     ...
+
+     # finally, return the result
+     return $envres->as_struct;
+ }
+
 
 =head1 DESCRIPTION
 
