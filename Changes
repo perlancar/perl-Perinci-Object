@@ -1,5 +1,11 @@
 Revision history for Perinci-Object
 
+0.23    2015-09-03 (PERLANCAR)
+
+	- Assume LANG=C will use the default en_US, this fixes lots of
+	  '{en_US ...}' marks on lots of dists using this.
+
+
 0.22    2015-09-03 (PERLANCAR)
 
 	- Mark requested language to aid debugging.
