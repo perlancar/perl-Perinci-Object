@@ -58,7 +58,7 @@ is($rimeta->langprop({lang=>"id"}, "description"), "Bahasa d",
        "specify lang id_ID via env LANG");
 }
 
-is($rimeta->langprop({lang=>"fr_FR"}, "summary"), "{en_US English}",
+is($rimeta->langprop({lang=>"fr_FR"}, "summary"), "{fr_FR|en_US English}",
    "specify non-existent lang fr_FR -> default_lang + marked");
 
 $rimeta = rimeta {
@@ -79,7 +79,7 @@ is($rimeta->langprop({lang=>"id_ID"}, "description"), "Ba\nhasa\n",
    "specify lang=id_ID");
 is($rimeta->langprop({lang=>"en_US"}, "description"), "Eng\nlish\n",
    "specify lang=en_US");
-is($rimeta->langprop({lang=>"fr_FR"}, "description"), "{id_ID Ba\nhasa}\n",
+is($rimeta->langprop({lang=>"fr_FR"}, "description"), "{fr_FR|id_ID Ba\nhasa}\n",
    "specify non-existent lang fr_FR -> default_lang id_ID + marked");
 
 is($rimeta->langprop({lang=>"fr_FR", mark_different_lang=>0}, "description"),

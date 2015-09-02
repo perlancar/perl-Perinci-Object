@@ -65,7 +65,7 @@ sub langprop {
         if (defined $v) {
             if ($k->[2]) {
                 my $has_nl = $v =~ s/\n\z//;
-                $v = "{$k->[0] $v}" . ($has_nl ? "\n" : "");
+                $v = "{$olang|$k->[0] $v}" . ($has_nl ? "\n" : "");
             }
             $v = trim_blank_lines($v);
             last GET;
