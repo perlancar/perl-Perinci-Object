@@ -1,5 +1,10 @@
 Revision history for Perinci-Object
 
+0.22    2015-09-03 (PERLANCAR)
+
+	- Mark requested language to aid debugging.
+
+
 0.21    2014-12-11 (PERLANCAR)
 
 	- No functional changes.
