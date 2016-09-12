@@ -83,7 +83,7 @@ sub add_result {
 
 =head1 DESCRIPTION
 
-This class is a subclass of L<Perinci::Object::EnvResult> and provide a
+This class is a subclass of L<Perinci::Object::EnvResult> and provides a
 convenience method when you want to use multistatus/detailed per-item results
 (specified in L<Rinci> 1.1.63: C<results> result metadata property). In this
 case, response status can be 200, 207, or non-success. As you add more per-item
