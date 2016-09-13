@@ -41,6 +41,11 @@ sub envresmulti {
     Perinci::Object::EnvResultMulti->new(@_);
 }
 
+sub envrestable {
+    require Perinci::Object::EnvResultTable;
+    Perinci::Object::EnvResultTable->new(@_);
+}
+
 sub riresmeta {
     require Perinci::Object::ResMeta;
     Perinci::Object::ResMeta->new(@_);
@@ -52,7 +57,7 @@ sub riresmeta {
 =head1 SYNOPSIS
 
  use Perinci::Object; # automatically exports risub(), rivar(), ripkg(),
-                      # envres(), envresmulti(), riresmeta()
+                      # envres(), envresmulti(), envrestable(), riresmeta()
  use Data::Dump; # for dd()
 
  # OO interface to function metadata.
@@ -116,6 +121,16 @@ sub riresmeta {
      ...
 
      # finally, return the result
+     return $envres->as_struct;
+ }
+
+ # an example of using rirestable()
+ sub myfunc {
+     ...
+     my $envres = envrestable();
+     $envres->add_field('foo');
+     $envres->add_field('bar');
+     ...
      return $envres->as_struct;
  }
 
