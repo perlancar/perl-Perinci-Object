@@ -9,7 +9,8 @@ use warnings;
 
 require Exporter;
 our @ISA    = qw(Exporter);
-our @EXPORT = qw(rimeta risub rivar ripkg envres envresmulti riresmeta);
+our @EXPORT = qw(rimeta risub rivar ripkg envres envresmulti envrestable
+                 riresmeta);
 
 sub rimeta {
     require Perinci::Object::Metadata;
@@ -124,7 +125,7 @@ sub riresmeta {
      return $envres->as_struct;
  }
 
- # an example of using rirestable()
+ # an example of using envrestable()
  sub myfunc {
      ...
      my $envres = envrestable();
@@ -167,6 +168,10 @@ Exported by default. A shortcut for Perinci::Object::EnvResult->new($res).
 =head2 envresmulti $res => OBJECT
 
 Exported by default. A shortcut for Perinci::Object::EnvResultMulti->new($res).
+
+=head2 envrestable $res => OBJECT
+
+Exported by default. A shortcut for Perinci::Object::EnvResultTable->new($res).
 
 =head2 riresmeta $resmeta => OBJECT
 

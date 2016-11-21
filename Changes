@@ -1,5 +1,13 @@
 Revision history for Perinci-Object
 
+0.25    2016-11-21 (PERLANCAR)
+
+        - [doc] Fix typo in Synopsis.
+
+        - Add class: Perinci::Object::EnvResultTable and envrestable() as
+          shortcut to instantiate this class.
+
+
 0.24    2015-09-03 (PERLANCAR)
 
 	- No functional changes.
