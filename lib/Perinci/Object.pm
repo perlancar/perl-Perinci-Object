@@ -108,7 +108,7 @@ sub riresmeta {
  # OO interface to function/method result metadata
  my $riresmeta = riresmeta { ... };
 
- # an example of using riresmulti()
+ # an example of using envresmulti()
  sub myfunc {
      ...
 
