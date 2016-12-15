@@ -1,5 +1,11 @@
 Revision history for Perinci-Object
 
+0.26    2016-12-15 (PERLANCAR)
+
+	- risub: Add method default_dry_run to check default dry-run mode
+	  (Rinci 1.1.83).
+
+
 0.25    2016-11-21 (PERLANCAR)
 
         - [doc] Fix typo in Synopsis.
