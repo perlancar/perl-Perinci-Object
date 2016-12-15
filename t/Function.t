@@ -59,6 +59,17 @@ subtest "can_dry_run" => sub {
     ok($risub->can_dry_run, "from tx feature");
 };
 
+subtest "default_dry_run" => sub {
+    $risub = risub { v=>1.1, features => {dry_run=>0}};
+    ok(!$risub->default_dry_run, "dry_run=0 -> no");
+    $risub = risub { v=>1.1, features => {dry_run=>1}};
+    ok(!$risub->default_dry_run, "dry_run=1 -> no");
+    $risub = risub { v=>1.1, features => {dry_run=>{default=>0}}};
+    ok(!$risub->default_dry_run, "dry_run={default=>0} -> no");
+    $risub = risub { v=>1.1, features => {dry_run=>{default=>1}}};
+    ok( $risub->default_dry_run, "dry_run={default=>1} -> yes");
+};
+
 # ---
 
 done_testing();

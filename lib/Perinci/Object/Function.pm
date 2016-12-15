@@ -40,6 +40,12 @@ sub can_dry_run {
     $ff->{dry_run} // $ff->{tx} && $ff->{tx}{v} == 2;
 }
 
+sub default_dry_run {
+    my $self = shift;
+    my $ff = ${$self}->{features} // {};
+    ref($ff->{dry_run}) eq 'HASH' && $ff->{dry_run}{default};
+}
+
 # convenience for accessing args property
 sub arg {
     my $self = shift;
@@ -103,6 +109,12 @@ doesn't exist, undef will be returned.
 Check whether function can do dry run, either from the C<dry_run> feature, or
 from the C<tx> feature. (Transaction can be used to emulate dry run, by calling
 the function with C<< -tx_action => 'check_state' >> only.)
+
+=head2 $risub->default_dry_run => BOOL
+
+Starting from Rinci 1.1.83, the C<dry_run> feature property can be a hash
+instead of a bool, and can contain this pair C<< default=>1 >> to specify that
+dry-run mode should be the default operation (e.g. for safety).
 
 =head2 $risub->arg(NAME[, VALUE])
 
