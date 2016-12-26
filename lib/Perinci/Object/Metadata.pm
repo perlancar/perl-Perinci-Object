@@ -6,7 +6,16 @@ package Perinci::Object::Metadata;
 use 5.010;
 use strict;
 use warnings;
-use String::Trim::More qw(trim_blank_lines);
+
+# BEGIN COPY-PASTE FROM String::Trim::More
+sub __trim_blank_lines {
+    local $_ = shift;
+    return $_ unless defined;
+    s/\A(?:\n\s*)+//;
+    s/(?:\n\s*){2,}\z/\n/;
+    $_;
+}
+# END COPY-PASTE
 
 sub new {
     my ($class, $meta) = @_;
@@ -68,7 +77,7 @@ sub langprop {
                 my $has_nl = $v =~ s/\n\z//;
                 $v = "{$olang|$k->[0] $v}" . ($has_nl ? "\n" : "");
             }
-            $v = trim_blank_lines($v);
+            $v = __trim_blank_lines($v);
             last GET;
         }
     }
