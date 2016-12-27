@@ -1,5 +1,12 @@
 Revision history for Perinci-Object
 
+0.28    2016-12-27 (PERLANCAR)
+
+	- No functional changes.
+
+	- [dist] Use _SPEC and _COPYPASTE prefixes for dependencies.
+
+
 0.27    2016-12-26 (PERLANCAR)
 
 	- Downgrade prereq String::Trim::More from RuntimeRequires to
