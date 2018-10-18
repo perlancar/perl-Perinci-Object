@@ -35,7 +35,16 @@ sub add_result {
             ${$self}->[0] = 207;
             ${$self}->[1] = "Partial success";
         } else {
-            ${$self}->[0] = 200;
+            my $overall_status = 200;
+            my %statuses;
+            for (@{ ${$self}->[3]{results} // []}) {
+                $statuses{ $_->{status} }++;
+            }
+            if (keys %statuses == 1) {
+                my @tmp = keys %statuses;
+                $overall_status = $tmp[0];
+            }
+            ${$self}->[0] = $overall_status;
             ${$self}->[1] = "All success";
         }
     } else {
