@@ -1,3 +1,8 @@
+0.311   2021-01-02  Released-By: PERLANCAR; Urgency: medium
+
+	- envresmulti: Allow adding payload in add_result().
+
+
 0.310   2018-10-18  Released-By: PERLANCAR
 
 	- [Bugfix] envresmulti(): If all statuses are 304, return final
