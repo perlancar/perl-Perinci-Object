@@ -1,6 +1,8 @@
 package Perinci::Object::EnvResultMulti;
 
+# AUTHORITY
 # DATE
+# DIST
 # VERSION
 
 use 5.010;
@@ -18,11 +20,16 @@ sub new {
 
 sub add_result {
     my ($self, $status, $message, $extra) = @_;
+    $extra //= {};
     my $num_ok  = 0;
     my $num_nok = 0;
 
     push @{ ${$self}->[3]{results} },
-        {status=>$status, message=>$message, %{ $extra // {} }};
+        {status=>$status, message=>$message, %$extra};
+    if (exists $extra->{payload}) {
+        ${$self}->[2] //= [];
+        push @{ ${$self}->[2] }, $extra->{payload};
+    }
     for (@{ ${$self}->[3]{results} // [] }) {
         if ($_->{status} =~ /\A(2|304)/) {
             $num_ok++;
@@ -89,6 +96,16 @@ sub add_result {
      # ]}]
  } # myfunc
 
+To add a payload for each result:
+
+ my $envres = Perinci::Object::EnvResultMulti->new;
+ $envres->add_result(200, "OK", {item_id=>1, payload=>"a"});
+ $envres->add_result(200, "OK", {item_id=>2, payload=>"b"});
+ $envres->add_result(200, "OK", {item_id=>3, payload=>"c"});
+
+ return $envres->as_struct;
+ # => [200, "All success", ["a","b","c"], ...]
+
 
 =head1 DESCRIPTION
 
@@ -109,6 +126,19 @@ specified, the default is C<< [200, "Success/no items"] >>.
 =head2 $envres->add_result($status, $message, \%extra)
 
 Add an item result.
+
+Extra keys:
+
+=over
+
+=item * item_id
+
+=item * payload
+
+If you want to add a payload for this result. The final overall payload will be
+an array composed from this payload.
+
+=back
 
 
 =head1 SEE ALSO

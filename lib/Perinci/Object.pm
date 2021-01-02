@@ -2,7 +2,9 @@
 
 package Perinci::Object;
 
+# AUTHORITY
 # DATE
+# DIST
 # VERSION
 
 use 5.010001;
@@ -118,8 +120,8 @@ sub riresmeta {
      my $envres = envresmulti();
 
      # add result for each item
-     $envres->add_result(200, "OK", {item_id=>1});
-     $envres->add_result(202, "OK", {item_id=>2, note=>"blah"});
+     $envres->add_result(200, "OK", {item_id=>1, payload=>"a"});
+     $envres->add_result(202, "OK", {item_id=>2, note=>"blah", payload=>"b"});
      $envres->add_result(404, "Not found", {item_id=>3});
      ...
 
